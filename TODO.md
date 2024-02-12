@@ -1,0 +1,1 @@
+[] Add to script to automatically install pip

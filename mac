@@ -122,47 +122,101 @@ brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
-tap "heroku/brew"
 
 # Unix
-brew "universal-ctags"
 brew "git"
 brew "openssl"
 brew "rcm"
-brew "reattach-to-user-namespace"
-brew "the_silver_searcher"
-brew "tmux"
-brew "vim"
-brew "watchman"
 brew "zsh"
 
-# Heroku
-brew "heroku/brew/heroku"
-brew "parity"
-
-# GitHub
+# GitHub CLI & Desktop
 brew "gh"
+brew install --cask github
 
-# Image manipulation
-brew "imagemagick"
+# Programming
+brew install nvm
+brew install --cask visual-studio-code
+brew install --cask iterm2
+brew install --cask tableplus
+brew install --cask docker
+brew install --cask dbeaver-community
+brew install --cask db-browser-for-sqlite
+brew install --cask mysqlworkbench
+brew install --cask bruno
+open https://apps.apple.com/us/app/xcode/id497799835?mt=12/ # Xcode App Store
+open https://docs.anaconda.com/free/miniconda/ # Miniconda
+open https://pip.pypa.io/en/stable/installation/ # Pip
 
-# PDF Rendering
-brew "poppler"
+# Browsers
+brew install --cask firefox
+brew install --cask google-chrome
+brew install --cask responsively
+
+# Speed Testing
+open https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12 # Blackmagic Disk Speed Test App Store
+open https://www.speedtest.net/apps/mac # Speedtest App Store
+
+# Photo/Video
+brew install --cask gluemotion
+open https://apps.apple.com/us/app/pixelmator-pro/id1289583905?mt=12 # Pixelmator Pro App Store
+open https://affinity.serif.com/en-us/photo/ # Affinity Photo
+open https://affinity.serif.com/en-us/designer/ # Affinity Designer
+
+# Entertainment
+brew install --cask spotify
+
+# Note Taking & Tracking
+brew install --cask notion
+brew install --cask notion-calendar
+brew install --cask ticktick
+brew install --cask nota 
+brew install --cask obsidian
+brew install --cask grammarly
+brew install --cask grammarly-desktop
+open https://www.agenda.com/ # Only available on the App Store
+open https://www.instapaper.com/save # Instapaper Firefox Extension
+open https://apps.apple.com/us/app/instapaper/id288545208 # Instapaper App Store
+open https://apps.apple.com/app/id1529448980 # Reeder App Store
+open https://getdarkmatter.dev/download # Dark Matter
+open https://apps.apple.com/us/app/notability/id360593530 # Notability App Store
+
+
+# Productivity Apps
+brew install --cask alt-tab
+brew install --cask raycast
+brew install --cask monitorcontrol
+brew install --cask istat-menus
+brew install --cask aldente
+brew install --cask fluid
+brew install --cask balenaetcher
+brew install --cask bitwarden
+brew install --cask raspberry-pi-imager
+brew install --cask keymapp
+open https://apps.apple.com/us/app/magnet/id441258766?mt=12 # Magnet App Store
+open https://apps.apple.com/us/app/gestimer-legacy/id990588172 # Gestimer App Store
+open https://www.insta360.com/download/insta360-link # Insta360 Link
+open https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-latest-mac.dmg # Yubico Authenticator
+open https://www.yubico.com/support/download/yubikey-manager/#h-downloads # Yubikey Manager
+
+
+# Communication Apps
+brew install --cask signal
+brew install --cask slack
+brew install --cask discord
+brew install --cask around
+brew install --cask microsoft-teams
+brew install --cask zoom
+
+# Personal 
+brew install --cask qflipper
+open https://reolink.com/software-and-manual/ # Reolink Client
+
 
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
 cask "gpg-suite-no-mail"
-
-# Databases
-brew "postgresql@14", restart_service: :changed
-brew "redis", restart_service: :changed
-EOF
-
-fancy_echo "Update heroku binary ..."
-brew unlink heroku
-brew link --force heroku
 
 fancy_echo "Configuring asdf version manager ..."
 if [ ! -d "$HOME/.asdf" ]; then
