@@ -136,13 +136,14 @@ brew install --cask github
 # Programming
 brew install nvm
 brew install --cask visual-studio-code
-brew install --cask iterm2
+# brew install --cask iterm2
 brew install --cask tableplus
 brew install --cask docker
 brew install --cask dbeaver-community
 brew install --cask db-browser-for-sqlite
 brew install --cask mysqlworkbench
 brew install --cask bruno
+brew install --cask warp
 open https://apps.apple.com/us/app/xcode/id497799835?mt=12/ # Xcode App Store
 open https://docs.anaconda.com/free/miniconda/ # Miniconda
 open https://pip.pypa.io/en/stable/installation/ # Pip
