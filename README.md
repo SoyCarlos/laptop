@@ -22,6 +22,9 @@ Bug reports for older versions are welcome.
 Install
 -------
 
+Create a file named `.tool-versions` and put in a line with the latest version of ruby found at `https://www.ruby-lang.org/en/downloads/`:
+`ruby 3.4.4`
+
 Download the script:
 
 ```sh
