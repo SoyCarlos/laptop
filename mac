@@ -121,7 +121,6 @@ fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
-tap "homebrew/services"
 
 
 # Unix
@@ -140,7 +139,6 @@ cask "github"
 
 # Programming
 brew "nvm"
-brew "docker"
 cask "visual-studio-code"
 cask "tableplus"
 cask "docker-desktop"
@@ -229,10 +227,6 @@ brew "redis", restart_service: :changed
 EOF
 
 # Programming
-fancy_echo "Installing pip ..."
-wget "https://bootstrap.pypa.io/get-pip.py"
-python3 get-pip.py
-
 fancy_echo "Opening app download links ..."
 open "https://apps.apple.com/us/app/xcode/id497799835?mt=12/" # Xcode App Store
 
@@ -278,10 +272,10 @@ add_or_update_asdf_plugin() {
   local name="$1"
   local url="$2"
 
-  if ! asdf plugin-list | grep -Fq "$name"; then
-    asdf plugin-add "$name" "$url"
+  if ! asdf plugin list | grep -Fq "$name"; then
+    asdf plugin add "$name" "$url"
   else
-    asdf plugin-update "$name"
+    asdf plugin update "$name"
   fi
 }
 
@@ -293,15 +287,16 @@ add_or_update_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
 install_asdf_language() {
   local language="$1"
   local version
-  version="$(asdf list-all "$language" | grep -v "[a-z]" | tail -1)"
+  version="$(asdf list all "$language" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+$" | tail -1)"
+   					  
 
   if ! asdf list "$language" | grep -Fq "$version"; then
     asdf install "$language" "$version"
-    asdf global "$language" "$version"
+    asdf set --home "$language" "$version"
   fi
 }
 
-fancy_echo "Installing latest Ruby ..."
+#fancy_echo "Installing latest Ruby ..."
 install_asdf_language "ruby"
 gem update --system
 number_of_cores=$(sysctl -n hw.ncpu)
