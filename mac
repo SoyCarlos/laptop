@@ -123,101 +123,149 @@ brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
 tap "homebrew/services"
 
+
 # Unix
 brew "git"
 brew "openssl"
-brew "rcm"
 brew "zsh"
+brew "the_silver_searcher"
+brew "vim"
+brew "watchman"
+
 
 # GitHub CLI & Desktop
 brew "gh"
-brew install --cask github
+cask "github"
+
 
 # Programming
-brew install nvm
-brew install --cask visual-studio-code
-# brew install --cask iterm2
-brew install --cask tableplus
-brew install --cask docker
-brew install --cask dbeaver-community
-brew install --cask db-browser-for-sqlite
-brew install --cask mysqlworkbench
-brew install --cask bruno
-brew install --cask warp
-open https://apps.apple.com/us/app/xcode/id497799835?mt=12/ # Xcode App Store
-open https://docs.anaconda.com/free/miniconda/ # Miniconda
-open https://pip.pypa.io/en/stable/installation/ # Pip
+brew "nvm"
+brew "docker"
+cask "visual-studio-code"
+cask "tableplus"
+cask "docker-desktop"
+cask "dbeaver-community"
+cask "db-browser-for-sqlite"
+cask "mysqlworkbench"
+cask "bruno"
+cask "warp"
+cask "miniconda"
+cask "cursor"
+cask "warp"
+
 
 # Browsers
-brew install --cask firefox
-brew install --cask google-chrome
-brew install --cask responsively
+cask "firefox"
+cask "google-chrome"
+cask "responsively"
+cask "zen"
+cask "tor-browser"
 
-# Speed Testing
-open https://apps.apple.com/us/app/blackmagic-disk-speed-test/id425264550?mt=12 # Blackmagic Disk Speed Test App Store
-open https://www.speedtest.net/apps/mac # Speedtest App Store
+# Photo/Video/Audio
+cask "gluemotion"
+cask "affinity-designer@1"
+cask "affinity-photo@1"
+cask "audacity"
+cask "obs"
 
-# Photo/Video
-brew install --cask gluemotion
-open https://apps.apple.com/us/app/pixelmator-pro/id1289583905?mt=12 # Pixelmator Pro App Store
-open https://affinity.serif.com/en-us/photo/ # Affinity Photo
-open https://affinity.serif.com/en-us/designer/ # Affinity Designer
 
 # Entertainment
-brew install --cask spotify
+cask "spotify"
+cask "makemkv"
+cask "calibre"
+cask "vlc"
+cask "steam"
 
 # Note Taking & Tracking
-brew install --cask notion
-brew install --cask notion-calendar
-brew install --cask ticktick
-brew install --cask nota 
-brew install --cask obsidian
-brew install --cask grammarly
-brew install --cask grammarly-desktop
-open https://www.agenda.com/ # Only available on the App Store
-open https://www.instapaper.com/save # Instapaper Firefox Extension
-open https://apps.apple.com/us/app/instapaper/id288545208 # Instapaper App Store
-open https://apps.apple.com/app/id1529448980 # Reeder App Store
-open https://getdarkmatter.dev/download # Dark Matter
-open https://apps.apple.com/us/app/notability/id360593530 # Notability App Store
+cask "notion"
+cask "notion-calendar"
+cask "ticktick"
+cask "obsidian"
+cask "antinote"
 
 
 # Productivity Apps
-brew install --cask alt-tab
-brew install --cask raycast
-brew install --cask monitorcontrol
-brew install --cask istat-menus
-brew install --cask aldente
-brew install --cask fluid
-brew install --cask balenaetcher
-brew install --cask bitwarden
-brew install --cask raspberry-pi-imager
-brew install --cask keymapp
-open https://apps.apple.com/us/app/magnet/id441258766?mt=12 # Magnet App Store
-open https://apps.apple.com/us/app/gestimer-legacy/id990588172 # Gestimer App Store
-open https://www.insta360.com/download/insta360-link # Insta360 Link
-open https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-latest-mac.dmg # Yubico Authenticator
-open https://www.yubico.com/support/download/yubikey-manager/#h-downloads # Yubikey Manager
+brew "tailscale"
+cask "alt-tab"
+cask "raycast"
+cask "monitorcontrol"
+cask "istat-menus"
+cask "aldente"
+cask "balenaetcher"
+cask "bitwarden"
+cask "raspberry-pi-imager"
+cask "keymapp"
+cask "insta360-link-controller"
+cask "yubico-authenticator"
+cask "yubico-yubikey-manager"
+cask "clockify"
+cask "windows-app"
+cask "bartender"
+cask "libreoffice"
 
 
 # Communication Apps
-brew install --cask signal
-brew install --cask slack
-brew install --cask discord
-brew install --cask around
-brew install --cask microsoft-teams
-brew install --cask zoom
+cask "signal"
+cask "slack"
+cask "discord"
+cask "microsoft-teams"
+cask "zoom"
+
 
 # Personal 
-brew install --cask qflipper
-open https://reolink.com/software-and-manual/ # Reolink Client
+cask "qflipper"
+cask "micro-snitch"
 
 
 # Programming language prerequisites and package managers
 brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
-cask "gpg-suite-no-mail"
+
+
+# Databases
+brew "postgresql@14", restart_service: :changed
+brew "redis", restart_service: :changed
+EOF
+
+# Programming
+fancy_echo "Installing pip ..."
+wget "https://bootstrap.pypa.io/get-pip.py"
+python3 get-pip.py
+
+fancy_echo "Opening app download links ..."
+open "https://apps.apple.com/us/app/xcode/id497799835?mt=12/" # Xcode App Store
+
+
+
+
+# Photo/Video
+open "https://apps.apple.com/us/app/pixelmator-pro/id1289583905?mt=12" # Pixelmator Pro App Store
+open "https://www.apple.com/final-cut-pro/trial/" # Final Cut Pro Trial
+
+
+# Note Taking
+open "https://www.agenda.com/" # Only available on the App Store
+open "https://www.instapaper.com/save" # Instapaper Firefox Extension
+open "https://apps.apple.com/us/app/instapaper/id288545208" # Instapaper App Store
+open "https://apps.apple.com/app/id1529448980" # Reeder App Store
+open "https://apps.apple.com/us/app/notability/id360593530" # Notability App Store
+open "https://apps.apple.com/app/apple-store/id1444383602?pt=525432&ct=goodnotes.com&mt=8" # Goodnotes
+open "https://addons.mozilla.org/en-US/firefox/addon/web-clipper-obsidian/" # Obsidian Web Clipper
+open "https://getdarkmatter.dev/download" # Darkmatter
+
+
+# Productivity
+open "https://apps.apple.com/us/app/magnet/id441258766?mt=12" # Magnet App Store
+open "https://apps.apple.com/us/app/gestimer-legacy/id990588172" # Gestimer App Store
+open "https://reolink.com/software-and-manual/" # Reolink Client
+
+
+# Misc
+open "https://apps.apple.com/us/app/callsheet-find-cast-crew/id1672356376" # Callsheet
+open "https://apps.apple.com/us/app/little-snitch-mini/id1629008763?mt=12&ct=odweb" # Little Snitch Mini
+open "https://filezilla-project.org/download.php?platform=macos-arm64" # Filezilla
+
 
 fancy_echo "Configuring asdf version manager ..."
 if [ ! -d "$HOME/.asdf" ]; then
