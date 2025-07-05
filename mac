@@ -213,6 +213,7 @@ cask "zoom"
 # Personal 
 cask "qflipper"
 cask "micro-snitch"
+brew "ykman"
 
 
 # Programming language prerequisites and package managers
